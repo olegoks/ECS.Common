@@ -1,0 +1,30 @@
+name: Release Package
+
+on:
+  push:
+    tags:
+      - 'v*'   # запускается при пуше тега вида v1.2.3
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get version from tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: Create package archive
+        run: |
+          zip -r ${{ github.event.repository.name }}-${{ steps.get_version.outputs.VERSION }}.zip \
+            Sources/
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ github.event.repository.name }}-*.zip
+          name: "Release ${{ steps.get_version.outputs.VERSION }}"
+          tag_name: ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
