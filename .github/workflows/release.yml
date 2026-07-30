@@ -4,7 +4,8 @@ on:
   push:
     tags:
       - 'v*'   # запускается при пуше тега вида v1.2.3
-
+permissions:
+  contents: write  
 jobs:
   build:
     runs-on: ubuntu-latest
