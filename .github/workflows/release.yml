@@ -18,9 +18,16 @@ jobs:
         id: get_version
         run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
 
-      - name: Inject version into Lua manifest
+      - name: Debug - show current version line
         run: |
-          sed -i "s/version[[:space:]]*=[[:space:]]*\"[^\"]*\"/version = \"${{ steps.get_version.outputs.VERSION }}\"/" ECS.Common.ecs_package
+          echo "=== Current version line ==="
+          grep -n "Version" ECS.Common.ecs_package
+          echo "=== Full file ==="
+          cat ECS.Common.ecs_package
+      
+      - name: Inject version into manifest
+        run: |
+          sed -i -E 's/(Version\s*=\s*)"[^"]*"/\1"${{ steps.get_version.outputs.VERSION }}"/' ECS.Common.ecs_package
           echo "=== Updated manifest ==="
           cat ECS.Common.ecs_package
 
