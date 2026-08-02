@@ -3,9 +3,11 @@ name: Release Package
 on:
   push:
     tags:
-      - 'v*'   # запускается при пуше тега вида v1.2.3
+      - 'v*'
+      
 permissions:
-  contents: write  
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,15 +18,27 @@ jobs:
         id: get_version
         run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
 
+      - name: Inject version into Lua manifest
+        run: |
+          sed -i "s/version[[:space:]]*=[[:space:]]*\"[^\"]*\"/version = \"${{ steps.get_version.outputs.VERSION }}\"/" ECS.Common.ecs_package
+          echo "=== Updated manifest ==="
+          cat ECS.Common.ecs_package
+
       - name: Create package archive
         run: |
           zip -r ${{ github.event.repository.name }}-${{ steps.get_version.outputs.VERSION }}.zip \
+            ECS.Common.ecs_package \
             Sources/
+
+      - name: Verify archive
+        run: unzip -l ${{ github.event.repository.name }}-${{ steps.get_version.outputs.VERSION }}.zip
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: ${{ github.event.repository.name }}-*.zip
+          files: |
+            ${{ github.event.repository.name }}-${{ steps.get_version.outputs.VERSION }}.zip
+            ECS.Common.ecs_package
           name: "Release ${{ steps.get_version.outputs.VERSION }}"
           tag_name: ${{ github.ref_name }}
         env:
