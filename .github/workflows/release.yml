@@ -27,7 +27,7 @@ jobs:
       
       - name: Inject version into manifest
         run: |
-            sed -i -E 's/(Version\s*=\s*)"[^"]*"/\1"${{ steps.get_version.outputs.VERSION }}"/' ECS.Common.ecs_package
+            sed -i -E 's/(^\s*Version\s*=\s*)"[^"]*"/\1"${{ steps.get_version.outputs.VERSION }}"/' ECS.Common.ecs_package
             echo "=== Updated manifest ==="
             cat ECS.Common.ecs_package
 
