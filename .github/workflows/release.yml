@@ -35,7 +35,7 @@ jobs:
         run: |
           zip -r ${{ github.event.repository.name }}-${{ steps.get_version.outputs.VERSION }}.zip \
             ECS.Common.ecs_package \
-            Sources/
+            Common/
 
       - name: Verify archive
         run: unzip -l ${{ github.event.repository.name }}-${{ steps.get_version.outputs.VERSION }}.zip
