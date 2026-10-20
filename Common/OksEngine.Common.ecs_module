@@ -1,8 +1,65 @@
 ECS = {
     Files = {
-        --"./Config/OksEngine.Config.ecs",
+
+        --Clock
+        "./Clock/OksEngine.Clock.ecs",
+
+        --Engine
+        "./Engine/OksEngine.FPS.ecs",
+        "./Engine/OksEngine.SystemMarks.ecs",
+        "./Engine/FramesCounter/OksEngine.FramesCounter.ecs",
+
+        --Async
         "./Async/OksEngine.Async.ecs",
+
+        --CommandLineParameters
         "./CommandLineParameters/OksEngine.CommandLineParameters.ecs",
+
+        --Debug
+        --  ECS
+        -- "./Debug/ECS/OksEngine.ECSMenu.ecs",
+        -- "./Debug/ECS/Inspector/OksEngine.ECSInspectorMenuItem.ecs",
+        -- "./Debug/ECS/Inspector/Window/OksEngine.ECSInspector.ecs",
+        -- "./Debug/ECS/ECSEditor/OksEngine.ECSEditor.ecs",
+        -- "./Debug/ECS/ECSEditor/Window/OksEngine.ECSEditorWindow.ecs",
+        -- "./Debug/ECS/ECSEditor/Resources/OksEngine.CreateNodeEntities.ecs",
+        -- "./Debug/ECS/ECSEditor/Resources/LoadECSFiles/OksEngine.CreateLinksFromECSFiles.ecs",
+        -- "./Debug/ECS/ECSEditor/Resources/LoadECSFiles/OksEngine.CreateLinksRequest.ecs",
+        -- "./Debug/ECS/ECSEditor/Resources/LoadECSFiles/OksEngine.CreateSceneLoadRequest.ecs",
+        -- "./Debug/ECS/ECSEditor/Resources/LoadECSFiles/OksEngine.EndLoadingECSFiles.ecs",
+        -- "./Debug/ECS/ECSEditor/Resources/LoadECSFiles/OksEngine.LoadECSFiles.ecs",
+        -- "./Debug/ECS/ECSEditor/Resources/LoadECSFiles/OksEngine.LoadingECSFiles.ecs",
+        -- "./Debug/ECS/ECSEditor/Resources/LoadECSFiles/OksEngine.ProcessLoadECSFilesButton.ecs",
+        -- "./Debug/ECS/ECSEditor/Resources/SaveECSFiles/OksEngine.CreateSceneSaveRequest.ecs",
+        -- "./Debug/ECS/ECSEditor/Resources/SaveECSFiles/OksEngine.ProcessSaveECSFilesButton.ecs",
+        -- "./Debug/ECS/ECSEditor/Resources/SaveECSFiles/OksEngine.SaveECSFilesButtonPressed.ecs",
+
+        -- -- MainMenu
+        -- "./Debug/MainMenu/OksEngine.MainMenuBar.ecs",
+
+        -- --Performance
+        -- "./Debug/EnginePerformance/OksEngine.EnginePerformance.ecs",
+
+        -- "./Debug/Performance/OksEngine.DrawEnginePerformance.ecs",
+
+        -- "./Debug/OksEngine.ImGui.ecs",
+        -- "./Debug/OksEngine.ImGuiRender.ecs",
+
+        --ECS
+        -- Controller
+        "./ECS/Controller/OksEngine.ECSController.ecs",
+        "./ECS/File/OksEngine.ECS.File.ecs",
+        "./ECS/Scene/OksEngine.Scene.ecs",
+
+        --Behaviour
+        "./Behaviour/OksEngine.Behaviour.ecs",
+        "./Behaviour/OksEngine.CreateLoadLuaScriptRequest.ecs",
+        "./Behaviour/OksEngine.CreateLuaContext.ecs",
+        "./Behaviour/OksEngine.CreateLuaScriptEntity.ecs",
+        "./Behaviour/OksEngine.LoadLuaScriptRequest.ecs",
+        "./Behaviour/OksEngine.LuaContext.ecs",
+        "./Behaviour/OksEngine.LuaScriptEntity.ecs",
+
         "./OksEngine.Active.ecs",
         "./OksEngine.BinaryData.ecs",
         "./OksEngine.ChildEntities.ecs",
@@ -27,3 +84,252 @@ ECS = {
         "./OksEngine.YAML.ecs"
     }
 }
+
+-- scene = {
+--     entities = {
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Clock/OksEngine.Clock.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Engine/OksEngine.FPS.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Engine/OksEngine.SystemMarks.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Engine/FramesCounter/OksEngine.FramesCounter.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Async/OksEngine.Async.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./CommandLineParameters/OksEngine.CommandLineParameters.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/ECS/OksEngine.ECSMenu.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/ECS/Inspector/OksEngine.ECSInspectorMenuItem.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/ECS/Inspector/Window/OksEngine.ECSInspector.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/ECS/ECSEditor/OksEngine.ECSEditor.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/ECS/ECSEditor/Window/OksEngine.ECSEditorWindow.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/ECS/ECSEditor/Resources/OksEngine.CreateNodeEntities.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/ECS/ECSEditor/Resources/LoadECSFiles/OksEngine.CreateLinksFromECSFiles.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/ECS/ECSEditor/Resources/LoadECSFiles/OksEngine.CreateLinksRequest.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/ECS/ECSEditor/Resources/LoadECSFiles/OksEngine.CreateSceneLoadRequest.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/ECS/ECSEditor/Resources/LoadECSFiles/OksEngine.EndLoadingECSFiles.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/ECS/ECSEditor/Resources/LoadECSFiles/OksEngine.LoadECSFiles.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/ECS/ECSEditor/Resources/LoadECSFiles/OksEngine.LoadingECSFiles.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/ECS/ECSEditor/Resources/LoadECSFiles/OksEngine.ProcessLoadECSFilesButton.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/ECS/ECSEditor/Resources/SaveECSFiles/OksEngine.CreateSceneSaveRequest.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/ECS/ECSEditor/Resources/SaveECSFiles/OksEngine.ProcessSaveECSFilesButton.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/ECS/ECSEditor/Resources/SaveECSFiles/OksEngine.SaveECSFilesButtonPressed.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/Guizmo/OksEngine.ImGui.Guizmo.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/MainMenu/OksEngine.MainMenuBar.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/EnginePerformance/OksEngine.EnginePerformance.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/MainMenu/OksEngine.MainMenuBar.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/Performance/OksEngine.DrawEnginePerformance.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/OksEngine.ImGui.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Debug/OksEngine.ImGuiRender.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./ECS/Controller/OksEngine.ECSController.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./ECS/File/OksEngine.ECS.File.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./ECS/Scene/OksEngine.Scene.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Behaviour/OksEngine.Behaviour.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Behaviour/OksEngine.CreateLoadLuaScriptRequest.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Behaviour/OksEngine.CreateLuaContext.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Behaviour/OksEngine.CreateLuaScriptEntity.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Behaviour/OksEngine.LoadLuaScriptRequest.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Behaviour/OksEngine.LuaContext.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./Behaviour/OksEngine.LuaScriptEntity.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.Active.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.BinaryData.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.ChildEntities.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.ChildEntity.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.Completed.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.Counter.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.Direction3D.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.GameObject.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.Height.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.LuaScript.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.Name.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.Position2D.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.Position3D.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.Rotation2D.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.Rotation3D.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.Scale2D.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.Scale3D.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.Serializable.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.String.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.Text.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.Width.ecs" }
+--         },
+--         {
+--             ECS__File__Tag = {},
+--             ECS__File__Path = { path = "./OksEngine.YAML.ecs" }
+--         },
+--     }
+-- }

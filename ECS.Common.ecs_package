@@ -4,7 +4,7 @@ Package = {
     FrameworkVersion = "1.0.0",
     Dependecies = {},
     Modules = {
-        { "Sources/OksEngine.Common.ecs_module" }
+        { "Common/OksEngine.Common.ecs_module" }
     }
 
 }

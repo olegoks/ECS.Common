@@ -1,0 +1,260 @@
+#pragma once
+#include <Common/Behaviour\auto_OksEngine.Behaviour.hpp>
+
+#include <Common/Behaviour\OksEngine.LuaEntity.hpp>
+#include <Common/Behaviour\OksEngine.Math3D.hpp>
+
+#include <Common/auto_OksEngine.Position3D.hpp>
+#include <Common/auto_OksEngine.Direction3D.hpp>
+//#include <Render/Camera/auto_OksEngine.Camera.hpp>
+//#include <Physics/auto_OksEngine.Physics.hpp>
+
+#include <magic_enum/magic_enum.hpp>
+
+//#include <auto_OksEngine.BindECSWorld.hpp>
+
+namespace Behaviour
+{
+	void CreateLuaScript::Update(
+		/*ECS2::Entity::Id entity0id, Resource::ResourceSystem* resourceSystem0,*/
+		ECS2::Entity::Id entity1id, const ScriptName* scriptName1) {
+
+		//Resources::ResourceData scriptResourceData
+		//	= resourceSystem0->system_->GetResourceSynch(
+		//		Subsystem::Type::Engine, "Root/" + scriptName1->name_);
+
+		//Resources::ResourceData entityResourceData
+		//	= resourceSystem0->system_->GetResourceSynch(
+		//		Subsystem::Type::Engine, "Root/Entity.lua");
+
+		////Resources::ResourceData math3DResourceData
+		////	= resourceSystem0->system_->GetResourceSynch(
+		////		Subsystem::Type::ChildThread, "Root/Math3D.lua");
+
+		//CreateComponent<LuaScript>(entity1id,
+		//	/*std::string{
+		//		math3DResourceData.GetData<char>(),
+		//		math3DResourceData.GetSize()
+		//	} +*/
+		//	std::string{
+		//		entityResourceData.GetData<char>(),
+		//		entityResourceData.GetSize()
+		//	} +
+		//	std::string{
+		//		scriptResourceData.GetData<char>(),
+		//		scriptResourceData.GetSize() });
+
+	};
+
+	void CreateLuaContext::Update(
+		ECS2::Entity::Id entity0id,
+		const ScriptName* scriptName0,
+		const ObjectName* objectName0,
+		const LuaScript* luaScript0) {
+
+		//auto luaContext = std::make_shared<::Lua::Context>();
+
+		//BindComponents(*luaContext);
+
+		//BindVector(*luaContext);
+		//BindMath3D(*luaContext);
+		//BindEntityId(*luaContext);
+		//BindECSWorld(*luaContext);
+
+		//luabridge::setGlobal(luaContext->state_, world_.get(), "ECSWorld");
+
+		//luaContext->LoadScript(luaScript0->text_);
+
+
+		//luabridge::LuaRef luaClass = luaContext->GetGlobalAsRef(objectName0->name_);
+
+		//const std::string createObjectCode = "object = " + objectName0->name_ + ":New()";
+		//luaContext->ExecuteCode(createObjectCode);
+
+		//luabridge::LuaRef luaObject = luaContext->GetGlobalAsRef("object");
+
+		//luabridge::LuaRef luaEngineEntity = luaObject["entityId"];
+		//EntityId* luaEntity = luaEngineEntity.cast<EntityId*>().value();
+		//luaEntity->SetId((std::uint64_t)entity0id);
+
+		//CreateComponent<LuaContext>(entity0id, luaContext);
+
+
+	}
+
+	void CallUpdateMethod::Update(
+		ECS2::Entity::Id entity0id,
+		const ScriptName* scriptName0,
+		const ObjectName* objectName0,
+		LuaContext* luaContext0) {
+
+		luabridge::LuaRef luaObject = luaContext0->context_->GetGlobalAsRef("object");
+
+		luabridge::LuaRef luaObjectUpdater = luaContext0->context_->GetGlobalAsRef(objectName0->name_ + "Updater");
+		luabridge::LuaRef luaUpdateMethod = luaObjectUpdater["Update"];
+
+		const auto result = luaUpdateMethod(luaObjectUpdater, luaObject, 1);
+		ASSERT_MSG(!result.hasFailed() && result.wasOk(), (result.errorCode().message() + result.errorMessage()).c_str());
+	};
+
+	static void debugHook(lua_State* L, lua_Debug* ar) {
+		if (ar->event == LUA_HOOKCALL) {
+
+
+			lua_getinfo(L, "Snl", ar);
+
+
+			//[[maybe_unused]]
+			//const bool CppFunctionDefined = (ar->what != nullptr) && (strcmp(ar->what, "C") != 0) && (ar->name != nullptr);
+			//ASSERT_FMSG(CppFunctionDefined,
+			//	"Error while execution lua script:{}\n"
+			//	"Attempt to call unknown function in line {}:\n{}\n",
+			//	ar->source,
+			//	ar->currentline,
+			//	[ar]() -> std::string {
+			//		const char* text = ar->source;
+			//		int line_number = ar->currentline;
+			//		if (!text || line_number <= 0) {
+			//			return "";
+			//		}
+
+			//		const char* current = text;
+			//		const char* line_start = text;
+			//		int current_line = 1;
+
+			//		// Ищем начало нужной строки
+			//		while (*current && current_line < line_number) {
+			//			if (*current == '\n') {
+			//				current_line++;
+			//				line_start = current + 1;  // Начало следующей строки
+			//			}
+			//			current++;
+			//		}
+
+			//		// Если строка не найдена (текст закончился раньше)
+			//		if (current_line < line_number) {
+			//			return "";
+			//		}
+
+			//		// Ищем конец строки
+			//		const char* line_end = line_start;
+			//		while (*line_end && *line_end != '\n') {
+			//			line_end++;
+			//		}
+
+			//		// Создаем строку от начала до конца
+			//		return std::string(line_start, line_end - line_start);
+			//	}()
+			//);
+
+			//lua_getinfo(L, "n", ar);
+			//if (ar->name == NULL) {
+			//	// Функция без имени - возможно, незарегистрированная глобальная
+			//	lua_Debug info;
+			//	if (!lua_getstack(L, 1, ar)) {
+			//		OS::AssertFail();
+			//	}
+			//	if (!lua_getinfo(L, "l", ar)) {
+			//		OS::AssertFail();
+			//	}
+
+			//	
+
+			//	/*std::cerr << "Предупреждение: вызов неизвестной функции в строке "
+			//		<< info.currentline << std::endl;*/
+			//}
+		}
+	}
+
+	void CallKeyboardEventsProcessor::Update(
+		ECS2::Entity::Id entity0id,
+		const ScriptName* scriptName0,
+		const ObjectName* objectName0,
+		LuaContext* luaContext0,
+		Input::KeyboardEvents* keyboardEvents0,
+		const Input::KeyMappings* input__KeyMappings0) {
+
+		luabridge::LuaRef luaObject = luaContext0->context_->GetGlobalAsRef("object");
+
+		luabridge::LuaRef luaObjectInputProcessor = luaContext0->context_->GetGlobalAsRef(objectName0->name_ + "InputProcessor");
+		luabridge::LuaRef processKeyboardInputMethod = luaObjectInputProcessor["ProcessKeyboardInput"];
+
+		lua_sethook(luaContext0->context_->state_, debugHook, LUA_MASKCALL, 0);
+
+		for (auto [key, event] : keyboardEvents0->events_) {
+
+			std::string keyboardKey = "";
+			std::string keyboardEvent = "";
+			keyboardKey = magic_enum::enum_name(key).data();		// "W"
+			keyboardEvent = magic_enum::enum_name(event).data();	// "Pressed"
+
+			auto it = input__KeyMappings0->mappings_.find(keyboardKey);
+			if (it != input__KeyMappings0->mappings_.cend()) {
+				keyboardKey = it->second;
+				const auto result = processKeyboardInputMethod(luaObjectInputProcessor, luaObject, keyboardKey, keyboardEvent);
+
+				ASSERT_MSG(!result.hasFailed() && result.wasOk(), (result.errorCode().message() + result.errorMessage()).c_str());
+			}
+		}
+
+	};
+
+	void CallCursorEventsProcessor::Update(
+		ECS2::Entity::Id entity0Id, const Behaviour::ScriptName* behaviour__ScriptName0,
+		const Behaviour::ObjectName* behaviour__ObjectName0, Behaviour::LuaContext* behaviour__LuaContext0,
+		Input::CursorEvents* input__CursorEvents0) {
+
+
+		//luabridge::LuaRef luaObject = luaContext0->context_->GetGlobalAsRef("object");
+
+		//luabridge::LuaRef luaObjectInputProcessor = luaContext0->context_->GetGlobalAsRef(objectName0->name_ + "InputProcessor");
+		//luabridge::LuaRef processMouseInputMethod = luaObjectInputProcessor["ProcessMouseInput"];
+
+		//auto cursorEvents = cursorInput0->events_;
+
+		//while (!cursorEvents.empty()) {
+		//	const auto& event = cursorEvents.back();
+
+		//	std::string mouseKey = "";
+		//	std::string mouseEvent = "";
+		//	//mouseKey = magic_enum::enum_name(event.key_).data();		// "LEFT_BUTTON"
+		//	//mouseEvent = magic_enum::enum_name(event.event_).data();	// "Pressed"
+		//	const std::string mouseMode = magic_enum::enum_name(event.mode_).data();
+		//	const auto result = processMouseInputMethod(luaObjectInputProcessor, luaObject, mouseMode, mouseKey, mouseEvent, event.offset_.x_, event.offset_.y_, 0.0f);
+		//	ASSERT_MSG(!result.hasFailed() && result.wasOk(), (result.errorCode().message() + result.errorMessage()).c_str());
+		//	cursorEvents.pop();
+		//}
+
+
+	}
+
+	void CallMouseEventsProcessor::Update(
+		ECS2::Entity::Id entity0id,
+		const ScriptName* scriptName0,
+		const ObjectName* objectName0,
+		LuaContext* luaContext0,
+		MouseEvents* mouseEvents0) {
+
+
+		luabridge::LuaRef luaObject = luaContext0->context_->GetGlobalAsRef("object");
+
+		luabridge::LuaRef luaObjectInputProcessor = luaContext0->context_->GetGlobalAsRef(objectName0->name_ + "InputProcessor");
+		luabridge::LuaRef processMouseInputMethod = luaObjectInputProcessor["ProcessMouseInput"];
+
+		auto mouseEvents = mouseEvents0->events_;
+
+		while (!mouseEvents.empty()) {
+			const auto& event = mouseEvents.back();
+
+			std::string mouseKey = "";
+			std::string mouseEvent = "";
+			//mouseKey = magic_enum::enum_name(event.key_).data();		// "LEFT_BUTTON"
+			//mouseEvent = magic_enum::enum_name(event.event_).data();	// "Pressed"
+			const auto result = processMouseInputMethod(luaObjectInputProcessor, luaObject, mouseKey, mouseEvent, 0.0f, 0.0f, event.scroll_);
+			ASSERT_MSG(!result.hasFailed() && result.wasOk(), (result.errorCode().message() + result.errorMessage()).c_str());
+			mouseEvents.pop();
+		}
+
+	}
+
+} // namespace Behaviour

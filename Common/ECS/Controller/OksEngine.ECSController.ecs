@@ -1,0 +1,16 @@
+CommonNamespace = {
+    ECSControllerComponent = {},
+
+    CreateECSControllerSystem = {
+        type = "Initialize",
+        updateMethod = {
+            createsEntities = {
+                {
+                    createsComponents = {
+                        "ECSController"
+                    }
+                }
+            }
+        }
+    }
+}

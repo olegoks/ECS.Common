@@ -1,0 +1,17 @@
+CreateLoadLuaScriptRequestSystem = {
+    tags = {
+        'Behaviour'
+    },
+    updateMethod = {
+        processesEntities = {
+            {
+                processesComponents = { 
+                    "Behaviour::ScriptName",
+                    "Behaviour::ObjectName"
+                },
+                createsComponents = { "LoadLuaScriptRequest" },
+                excludes = { "LoadLuaScriptRequest" }
+            }
+        }
+    }
+}

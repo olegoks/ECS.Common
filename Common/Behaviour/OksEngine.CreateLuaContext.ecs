@@ -1,0 +1,18 @@
+CreateLuaContextSystem = {
+    tags = {
+        'Behaviour'
+    },
+    updateMethod = {
+        processesEntities = {
+            {
+                processesComponents = {
+                    "Behaviour::ScriptName",
+                    "Behaviour::ObjectName",
+                    "LuaScriptEntity"
+                },
+                createsComponents = { "LuaContext" },
+                excludes = { "LuaContext" }
+            }
+        }
+    }        
+}

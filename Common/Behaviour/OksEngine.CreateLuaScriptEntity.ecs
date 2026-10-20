@@ -1,0 +1,20 @@
+CreateLuaScriptEntitySystem = {
+    tags = {
+        'Behaviour'
+    },
+    updateMethod = {
+        processesEntities = {
+            {
+                processesComponents = { 
+                    "LoadLuaScriptRequest"
+                },
+                createsComponents = { 
+                    "LuaScriptEntity"
+                },
+                excludes = {
+                    "LuaScriptEntity"
+                }
+            }
+        }
+    }
+}

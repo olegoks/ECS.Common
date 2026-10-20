@@ -1,0 +1,10 @@
+LuaContextComponent = {
+    bindable = false,
+    serializable = false,
+    fields = { 
+        { 
+            type = "::Lua::Context", 
+            name = "context",
+            copyable = false }
+     }
+}

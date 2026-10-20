@@ -47,9 +47,9 @@ AsyncNamespace = {
             },
             StatesArchetype = {
                 components = {
-                    "State::Pending",
-                    "State::InProgress",
-                    "State::Finished"
+                    "Async::Manager::Task::State::Pending",
+                    "Async::Manager::Task::State::InProgress",
+                    "Async::Manager::Task::State::Finished"
                 }
             },
             InfoComponent = {

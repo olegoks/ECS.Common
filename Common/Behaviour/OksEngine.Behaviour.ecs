@@ -1,0 +1,167 @@
+BehaviourNamespace = {
+    
+    ScriptNameComponent = {
+        fields = {
+            { type = "std::string", name = "name" }
+        }
+    },
+
+    ObjectNameComponent = {
+        fields = {
+            { type = "std::string", name = "name" }
+        }
+    },
+    
+    LuaScriptComponent = {
+        serializable = false,
+        fields = {
+            { type="std::string", name="text" }
+        }
+    },
+
+    CreateLuaScriptSystem = {
+        tags = {
+            'Behaviour'
+        },
+        updateMethod = {
+            processesEntities = {
+                -- {
+                --     processesComponents = {
+                --         { name = "ResourceSystem", readonly = false }
+                --     }
+                -- },
+                {
+                    processesComponents = {
+                        "ScriptName"
+                    },
+                    createsComponents = {
+                        "LuaScript"
+                    },
+                    excludes = {
+                        "LuaScript"
+                    }
+                }
+            }
+        }
+    },
+
+    LuaContextComponent = {
+        bindable = false,
+        serializable = false,
+        fields = {
+            { type = "std::shared_ptr<::Lua::Context>",  name="context"}
+        }
+    },
+
+    CreateLuaContextSystem = {
+        tags = {
+            'Behaviour'
+        },
+        updateMethod = {
+            processesEntities = {
+                {
+                    processesComponents = {
+                        "ScriptName",
+                        "ObjectName",
+                        "LuaScript"
+                    },
+                    createsComponents = {
+                        "LuaContext"
+                    },
+                    excludes = {
+                        "LuaContext"
+                    }
+                }
+            }
+        }
+    },
+
+    CallKeyboardEventsProcessorSystem = {
+        callOrder = {
+            runAfter = "Input::SendWindowKeyboardEvents",
+            runBefore = "Input::ClearKeyboardEvents"
+        },
+        tags = {
+            'Behaviour'
+        },
+        updateMethod = {
+            processesEntities = {
+                {
+                    processesComponents = {
+                        "ScriptName",
+                        "ObjectName",
+                        { name = "LuaContext",    readonly = false },
+                        { name = "Input::KeyboardEvents", readonly = false },
+                        "Input::KeyMappings"
+                        -- { name = "MouseEvents",    readonly = false }
+                    }
+                }
+            }
+        }
+    },
+
+    CallCursorEventsProcessorSystem = {
+        callOrder = {
+            runAfter = "SendWindowCursorEvents",
+            runBefore = "ClearCursorEvents"
+        },
+        tags = {
+            'Behaviour'
+        },
+        updateMethod = {
+            processesEntities = {
+                {
+                    processesComponents = {
+                        "ScriptName",
+                        "ObjectName",
+                        { name = "LuaContext",    readonly = false },
+                        { name = "CursorEvents", readonly = false },
+                        -- { name = "MouseEvents",    readonly = false }
+                    }
+                }
+            }
+        }
+    },
+
+    CallMouseEventsProcessorSystem = {
+        callOrder = {
+            runAfter = "SendWindowMouseEvents",
+            runBefore = "ClearMouseEvents"
+        },
+        tags = {
+            'Behaviour'
+        },
+        updateMethod = {
+            processesEntities = {
+                {
+                    processesComponents = {
+                        "ScriptName",
+                        "ObjectName",
+                        { name = "LuaContext",    readonly = false },
+                        { name = "MouseEvents", readonly = false },
+                        -- { name = "MouseEvents",    readonly = false }
+                    }
+                }
+            }
+        }
+    },
+
+
+    CallUpdateMethodSystem = {
+        tags = {
+            'Behaviour'
+        },
+        updateMethod = {
+            processesEntities = {
+                {
+                    processesComponents = {
+                        "ScriptName",
+                        "ObjectName",
+                        { name = "LuaContext", readonly = false }
+                    }
+                }
+            }
+        }
+    }
+
+}
