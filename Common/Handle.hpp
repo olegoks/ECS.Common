@@ -1,7 +1,7 @@
 #pragma once
 
-#include <Common.Types.hpp>
-#include <OS.Assert.hpp>
+#include <Common/Common.Types.hpp>
+#include <Common/OS/OS.Assert.hpp>
 
 namespace Common {
     class Handle {

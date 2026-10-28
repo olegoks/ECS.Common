@@ -3,6 +3,8 @@ Package = {
     Version = "0.0.0-dev",
     FrameworkVersion = "1.0.0",
     Dependecies = {},
+
+    IncludeDirectories = { "Common/ImGui" },
     Modules = {
         { "Common/OksEngine.Common.ecs_module" }
     }

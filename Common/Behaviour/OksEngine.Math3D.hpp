@@ -1,9 +1,9 @@
 #pragma once 
 
-#include <Math.hpp>
+#include <Common/Math/Math.hpp>
 
 //#include <OksEngine.ECS.Component.hpp>
-#include <Lua.Context.hpp>
+#include <Common/Lua/Lua.Context.hpp>
 
 namespace OksEngine {
 

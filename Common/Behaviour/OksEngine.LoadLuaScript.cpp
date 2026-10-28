@@ -15,19 +15,19 @@
 
 
 
-	void CreateLuaScriptEntity::Update(
-		ECS2::Entity::Id entity0Id, const ::LoadLuaScriptRequest* __LoadLuaScriptRequest0) {
-		const ECS2::Entity::Id loadResourceRequestEntityId = __LoadLuaScriptRequest0->loadResourceRequestEntityId_;
-		/*if (world->IsComponentExist<Completed>(loadResourceRequestEntityId)) {
-			auto* resourceEntity = world->GetComponent<ResourceEntity>(loadResourceRequestEntityId);
-			auto* binaryData = world->GetComponent<BinaryData>(resourceEntity->id_);
-			auto* scriptName = world->GetComponent<Name>(loadResourceRequestEntityId);
-			const ECS::Entity::Id luaScriptEntityId = world->CreateEntity();
-			{
-				world->CreateComponent<LuaScript>(luaScriptEntityId);
-				world->CreateComponent<Name>(luaScriptEntityId, scriptName->value_);
-				world->CreateComponent<Text>(luaScriptEntityId, std::string{ binaryData->data_.data(), binaryData->data_.size() });
-			}
-			world->CreateComponent<LuaScriptEntity>(entityId, luaScriptEntityId);
-		}*/
-	}
+	//void CreateLuaScriptEntity::Update(
+	//	ECS2::Entity::Id entity0Id, const ::LoadLuaScriptRequest* __LoadLuaScriptRequest0) {
+	//	const ECS2::Entity::Id loadResourceRequestEntityId = __LoadLuaScriptRequest0->loadResourceRequestEntityId_;
+	//	/*if (world->IsComponentExist<Completed>(loadResourceRequestEntityId)) {
+	//		auto* resourceEntity = world->GetComponent<ResourceEntity>(loadResourceRequestEntityId);
+	//		auto* binaryData = world->GetComponent<BinaryData>(resourceEntity->id_);
+	//		auto* scriptName = world->GetComponent<Name>(loadResourceRequestEntityId);
+	//		const ECS::Entity::Id luaScriptEntityId = world->CreateEntity();
+	//		{
+	//			world->CreateComponent<LuaScript>(luaScriptEntityId);
+	//			world->CreateComponent<Name>(luaScriptEntityId, scriptName->value_);
+	//			world->CreateComponent<Text>(luaScriptEntityId, std::string{ binaryData->data_.data(), binaryData->data_.size() });
+	//		}
+	//		world->CreateComponent<LuaScriptEntity>(entityId, luaScriptEntityId);
+	//	}*/
+	//}

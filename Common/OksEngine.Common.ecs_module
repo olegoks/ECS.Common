@@ -1,4 +1,8 @@
 ECS = {
+    IncludeDirectories = {
+        "./ImGui"
+
+    },
     Files = {
 
         --Clock

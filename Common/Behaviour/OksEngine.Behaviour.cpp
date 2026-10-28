@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <Common/Behaviour\auto_OksEngine.Behaviour.hpp>
 
 #include <Common/Behaviour\OksEngine.LuaEntity.hpp>
@@ -122,34 +122,34 @@ namespace Behaviour
 			//		const char* line_start = text;
 			//		int current_line = 1;
 
-			//		// Ищем начало нужной строки
+			//		// РС‰РµРј РЅР°С‡Р°Р»Рѕ РЅСѓР¶РЅРѕР№ СЃС‚СЂРѕРєРё
 			//		while (*current && current_line < line_number) {
 			//			if (*current == '\n') {
 			//				current_line++;
-			//				line_start = current + 1;  // Начало следующей строки
+			//				line_start = current + 1;  // РќР°С‡Р°Р»Рѕ СЃР»РµРґСѓСЋС‰РµР№ СЃС‚СЂРѕРєРё
 			//			}
 			//			current++;
 			//		}
 
-			//		// Если строка не найдена (текст закончился раньше)
+			//		// Р•СЃР»Рё СЃС‚СЂРѕРєР° РЅРµ РЅР°Р№РґРµРЅР° (С‚РµРєСЃС‚ Р·Р°РєРѕРЅС‡РёР»СЃСЏ СЂР°РЅСЊС€Рµ)
 			//		if (current_line < line_number) {
 			//			return "";
 			//		}
 
-			//		// Ищем конец строки
+			//		// РС‰РµРј РєРѕРЅРµС† СЃС‚СЂРѕРєРё
 			//		const char* line_end = line_start;
 			//		while (*line_end && *line_end != '\n') {
 			//			line_end++;
 			//		}
 
-			//		// Создаем строку от начала до конца
+			//		// РЎРѕР·РґР°РµРј СЃС‚СЂРѕРєСѓ РѕС‚ РЅР°С‡Р°Р»Р° РґРѕ РєРѕРЅС†Р°
 			//		return std::string(line_start, line_end - line_start);
 			//	}()
 			//);
 
 			//lua_getinfo(L, "n", ar);
 			//if (ar->name == NULL) {
-			//	// Функция без имени - возможно, незарегистрированная глобальная
+			//	// Р¤СѓРЅРєС†РёСЏ Р±РµР· РёРјРµРЅРё - РІРѕР·РјРѕР¶РЅРѕ, РЅРµР·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅР°СЏ РіР»РѕР±Р°Р»СЊРЅР°СЏ
 			//	lua_Debug info;
 			//	if (!lua_getstack(L, 1, ar)) {
 			//		OS::AssertFail();
@@ -160,7 +160,7 @@ namespace Behaviour
 
 			//	
 
-			//	/*std::cerr << "Предупреждение: вызов неизвестной функции в строке "
+			//	/*std::cerr << "РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ: РІС‹Р·РѕРІ РЅРµРёР·РІРµСЃС‚РЅРѕР№ С„СѓРЅРєС†РёРё РІ СЃС‚СЂРѕРєРµ "
 			//		<< info.currentline << std::endl;*/
 			//}
 		}

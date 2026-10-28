@@ -1,8 +1,8 @@
 #pragma once 
 
-#include <ECS2.World.hpp>
+#include <Common/ECS2/ECS2.World.hpp>
 
-#include <Lua.Context.hpp>
+#include <Common/Lua/Lua.Context.hpp>
 
 #include <auto_ecs_generator3.Project.hpp>
 
